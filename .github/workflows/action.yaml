@@ -1,16 +1,27 @@
-name: Python Script Pipeline
+name: Clear cache pipeline (Dispatcher & Akamai)
 
 on:
   workflow_dispatch:
+    inputs:
+        env:
+            required: true
+            type: choice
+            options:
+                - DEV1
+                - DEV2
+                - TEST
+                - INT
+                - PrePROD
+                - PROD
 
 jobs:
-  run_python_script:
+  clear_cache:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
@@ -22,4 +33,4 @@ jobs:
   
 
       - name: Run Python script
-        run: python src/main.py
+        run: python src/main.py ${{inputs.env}}
