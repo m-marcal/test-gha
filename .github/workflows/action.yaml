@@ -13,6 +13,11 @@ on:
                 - INT
                 - PrePROD
                 - PROD
+  workflow_call:
+    inputs:
+      env:
+          required: true
+          type: string
 
 jobs:
   clear_cache:
