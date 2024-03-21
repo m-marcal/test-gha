@@ -10,13 +10,6 @@ runs:
   using: composite
   steps: 
     - uses: actions/checkout@v3
-    
-    - name: Get Nebula Secrets
-      id: get-nebula-secrets
-      uses: dh-io-actions/get-nebula-secrets@v3
-      with:
-        secret: GITHUB_DOT_COM
-
 
     - name: Setup Python
       uses: actions/setup-python@v2
